@@ -1,0 +1,29 @@
+From b35de494e8669e9fd522eec015614df4ae36189b Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Thu, 2 Mar 2023 11:28:55 +0000
+Subject: [PATCH 2/4] Remove duplicated ro.adb.secure
+
+---
+ config/common.mk | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/config/common.mk b/config/common.mk
+index 499fe586..85d3c212 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -14,12 +14,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
+ endif
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),eng)
+-# Disable ADB authentication
+-PRODUCT_SYSTEM_PROPERTIES += ro.adb.secure=0
+-else
+-# Enable ADB authentication
+-PRODUCT_SYSTEM_PROPERTIES += ro.adb.secure=1
+-
+ # Disable extra StrictMode features on all non-engineering builds
+ PRODUCT_SYSTEM_PROPERTIES += persist.sys.strictmode.disable=true
+ endif
+-- 
+2.37.3
+

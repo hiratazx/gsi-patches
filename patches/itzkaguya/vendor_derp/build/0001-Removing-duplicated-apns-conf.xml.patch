@@ -1,0 +1,48 @@
+From d846263ed8d9c2193673c33d825c1be337191d8a Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Thu, 2 Mar 2023 11:58:48 +0000
+Subject: [PATCH] Removing duplicated apns-conf.xml
+
+---
+ target/product/aosp_product.mk        | 8 ++++----
+ target/product/full_base_telephony.mk | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/target/product/aosp_product.mk b/target/product/aosp_product.mk
+index 5c1b1dd358..a784b58f3f 100644
+--- a/target/product/aosp_product.mk
++++ b/target/product/aosp_product.mk
+@@ -36,7 +36,7 @@ PRODUCT_PACKAGES += \
+ 
+ # Telephony:
+ #   Provide a APN configuration to GSI product
+-ifeq ($(DERP_BUILD),)
+-PRODUCT_COPY_FILES += \
+-    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+-endif
++#ifeq ($(DERP_BUILD),)
++#PRODUCT_COPY_FILES += \
++#    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
++#endif
+diff --git a/target/product/full_base_telephony.mk b/target/product/full_base_telephony.mk
+index 740c9b2ea8..31bcc963fa 100644
+--- a/target/product/full_base_telephony.mk
++++ b/target/product/full_base_telephony.mk
+@@ -26,10 +26,10 @@ PRODUCT_VENDOR_PROPERTIES := \
+ PRODUCT_COPY_FILES := \
+     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
+ 
+-ifeq ($(DERP_BUILD),)
+-PRODUCT_COPY_FILES += \
+-    device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
+-endif
++#ifeq ($(DERP_BUILD),)
++#PRODUCT_COPY_FILES += \
++#    device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
++#endif
+ 
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
+-- 
+2.39.2
+

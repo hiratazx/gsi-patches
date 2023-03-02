@@ -1,0 +1,30 @@
+From 5830fecd736bd7ee9914efb826c8ac4b738e0bfc Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Thu, 2 Mar 2023 12:15:58 +0000
+Subject: [PATCH] Disable optimization for the sse4.2/popcount
+
+---
+ build/Android.bp | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/build/Android.bp b/build/Android.bp
+index d2545a401d..8afcab2fa2 100644
+--- a/build/Android.bp
++++ b/build/Android.bp
+@@ -203,13 +203,6 @@ art_module_art_global_defaults {
+             // TODO(b/172480617): Clean up with that.
+             enabled: false,
+         },
+-        host: {
+-            cflags: [
+-                // Bug: 15446488. We don't omit the frame pointer to work around
+-                // clang/libunwind bugs that cause SEGVs in run-test-004-ThreadStress.
+-                "-fno-omit-frame-pointer",
+-            ],
+-        },
+         // The build assumes that all our x86/x86_64 hosts (such as buildbots and developer
+         // desktops) support at least sse4.2/popcount. This firstly implies that the ART
+         // runtime binary itself may exploit these features. Secondly, this implies that
+-- 
+2.37.3
+
