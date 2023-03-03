@@ -1,18 +1,17 @@
-From 66253f8bd4ae72f556dc6e9385bc666f95672da3 Mon Sep 17 00:00:00 2001
+From 7bb76a3eead7c0e0b9e97ceb4d1d5db296cf8075 Mon Sep 17 00:00:00 2001
 From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
-Date: Thu, 2 Mar 2023 14:28:19 +0000
+Date: Fri, 3 Mar 2023 14:44:13 +0000
 Subject: [PATCH 2/2] Vold : Timeout error on unmounting files contained in phh
-  folder
 
 ---
  VolumeManager.cpp | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/VolumeManager.cpp b/VolumeManager.cpp
-index 8190e7e..e41d22c 100644
+index 2435819..2b4d4a4 100644
 --- a/VolumeManager.cpp
 +++ b/VolumeManager.cpp
-@@ -974,6 +974,7 @@ int VolumeManager::unmountAll() {
+@@ -670,6 +670,7 @@ int VolumeManager::unmountAll() {
      while ((mentry = getmntent(fp)) != NULL) {
          auto test = std::string(mentry->mnt_dir);
          if ((StartsWith(test, "/mnt/") &&
@@ -21,5 +20,5 @@ index 8190e7e..e41d22c 100644
               !StartsWith(test, "/mnt/scratch") &&
  #endif
 -- 
-2.37.3
+2.39.2
 

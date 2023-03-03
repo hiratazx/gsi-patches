@@ -1,21 +1,22 @@
-From c35c32fd7aa20add5fac173b93c340ce732f9b30 Mon Sep 17 00:00:00 2001
+From a85d7cb104f83f5db2ff4bb64edb648f498c132f Mon Sep 17 00:00:00 2001
 From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
-Date: Thu, 2 Mar 2023 15:02:52 +0000
-Subject: [PATCH] Adding maintainer on overlay
+Date: Fri, 3 Mar 2023 14:25:46 +0000
+Subject: [PATCH 2/2] Adding maintainer overlay
 
 ---
- .../apps/Settings/res/values/derp_strings.xml  | 18 ++++++++++++++++++
+ .../apps/Settings/res/values/du_strings.xml    | 18 ++++++++++++++++++
  1 file changed, 18 insertions(+)
- create mode 100644 overlay/packages/apps/Settings/res/values/derp_strings.xml
+ create mode 100644 overlay-nad/packages/apps/Settings/res/values/du_strings.xml
 
-diff --git a/overlay/packages/apps/Settings/res/values/derp_strings.xml b/overlay/packages/apps/Settings/res/values/derp_strings.xml
+diff --git a/overlay-nad/packages/apps/Settings/res/values/du_strings.xml b/overlay-nad/packages/apps/Settings/res/values/du_strings.xml
 new file mode 100644
-index 0000000..3260b88
+index 0000000..ed938fe
 --- /dev/null
-+++ b/overlay/packages/apps/Settings/res/values/derp_strings.xml
++++ b/overlay-nad/packages/apps/Settings/res/values/du_strings.xml
 @@ -0,0 +1,18 @@
 +<?xml version="1.0" encoding="utf-8"?>
-+<!-- Copyright (C) 2020 DerpFest
++<!--
++     Copyright (C) 2020-2021 NusantaraROM
 +     Licensed under the Apache License, Version 2.0 (the "License");
 +     you may not use this file except in compliance with the License.
 +     You may obtain a copy of the License at
@@ -29,9 +30,8 @@ index 0000000..3260b88
 +<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 +
 +    <string name="maintainer_name">ItzKaguya</string>
-+    <string name="maintainer_telegram">https://t.me/ItzKaguya</string>
 +
 +</resources>
 -- 
-2.37.3
+2.39.2
 

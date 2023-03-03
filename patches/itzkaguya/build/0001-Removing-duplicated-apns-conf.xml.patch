@@ -1,48 +1,66 @@
-From d846263ed8d9c2193673c33d825c1be337191d8a Mon Sep 17 00:00:00 2001
+From b8522a44384949a516a47ff45fa52ef8106d367b Mon Sep 17 00:00:00 2001
 From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
-Date: Thu, 2 Mar 2023 11:58:48 +0000
+Date: Fri, 3 Mar 2023 14:07:33 +0000
 Subject: [PATCH] Removing duplicated apns-conf.xml
 
 ---
- target/product/aosp_product.mk        | 8 ++++----
  target/product/full_base_telephony.mk | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ target/product/gsi_common.mk          | 8 ++++----
+ target/product/mainline.mk            | 6 +++---
+ 3 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/target/product/aosp_product.mk b/target/product/aosp_product.mk
-index 5c1b1dd358..a784b58f3f 100644
---- a/target/product/aosp_product.mk
-+++ b/target/product/aosp_product.mk
-@@ -36,7 +36,7 @@ PRODUCT_PACKAGES += \
- 
- # Telephony:
- #   Provide a APN configuration to GSI product
--ifeq ($(DERP_BUILD),)
--PRODUCT_COPY_FILES += \
--    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
--endif
-+#ifeq ($(DERP_BUILD),)
-+#PRODUCT_COPY_FILES += \
-+#    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
-+#endif
 diff --git a/target/product/full_base_telephony.mk b/target/product/full_base_telephony.mk
-index 740c9b2ea8..31bcc963fa 100644
+index d1bb7bda6..4c49b63af 100644
 --- a/target/product/full_base_telephony.mk
 +++ b/target/product/full_base_telephony.mk
-@@ -26,10 +26,10 @@ PRODUCT_VENDOR_PROPERTIES := \
+@@ -30,10 +30,10 @@ endif
  PRODUCT_COPY_FILES := \
      frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
  
--ifeq ($(DERP_BUILD),)
+-ifeq ($(NAD_BUILD),)
 -PRODUCT_COPY_FILES += \
 -    device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 -endif
-+#ifeq ($(DERP_BUILD),)
++#ifeq ($(NAD_BUILD),)
 +#PRODUCT_COPY_FILES += \
 +#    device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 +#endif
  
  $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
  $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
+diff --git a/target/product/gsi_common.mk b/target/product/gsi_common.mk
+index 1e91d5d0e..e9a28d4c8 100644
+--- a/target/product/gsi_common.mk
++++ b/target/product/gsi_common.mk
+@@ -82,10 +82,10 @@ PRODUCT_PACKAGES += \
+ 
+ # Telephony:
+ #   Provide a APN configuration to GSI product
+-ifeq ($(NAD_BUILD),)
+-PRODUCT_COPY_FILES += \
+-    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+-endif
++#ifeq ($(NAD_BUILD),)
++#PRODUCT_COPY_FILES += \
++#    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
++#endif
+ 
+ # NFC:
+ #   Provide a libnfc-nci.conf to GSI product
+diff --git a/target/product/mainline.mk b/target/product/mainline.mk
+index 80ff976d0..cb9274a9c 100644
+--- a/target/product/mainline.mk
++++ b/target/product/mainline.mk
+@@ -33,6 +33,6 @@ PRODUCT_PACKAGES += \
+     PhotoTable \
+     WallpaperPicker
+ 
+-ifeq ($(NAD_BUILD),)
+-PRODUCT_COPY_FILES += device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+-endif
++#ifeq ($(NAD_BUILD),)
++#PRODUCT_COPY_FILES += device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
++#endif
 -- 
 2.39.2
 
