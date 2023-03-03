@@ -3,7 +3,7 @@
 set -e
 
 source="$(dirname "$(readlink -f -- "$0")")"
-phh="$source/patches/trebledroid"
+phh="$source/patches/phh"
 personal="$source/patches/itzkaguya"
 extras="$source/patches/extras"
 misc="$source/patches/misc"

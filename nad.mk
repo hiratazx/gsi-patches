@@ -1,7 +1,7 @@
 $(call inherit-product, vendor/nusantara/config/common.mk)
 $(call inherit-product, vendor/nusantara/config/BoardConfigSoong.mk)
 $(call inherit-product, vendor/nusantara/config/BoardConfigNAD.mk)
-$(call inherit-product, device/nusantara/sepolicy/common/sepolicy.mk)
+$(call inherit-product, device/nad/sepolicy/common/sepolicy.mk)
 -include vendor/nusantara/build/core/config.mk
 TARGET_NO_KERNEL_OVERRIDE := true
 TARGET_NO_KERNEL_IMAGE := true
