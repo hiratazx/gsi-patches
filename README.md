@@ -1,15 +1,15 @@
-## DerpFest Tango Thirteen Patches for Generic System Image
-Patches for building DerpFest Tango Thirteen
+## CipherOS 4.0 Thirteen Patches for Generic System Image
+Patches for building CipherOS 4.0 Thirteen
 
 ### How to apply patches? ###
 ```bash
-git clone https://github.com/Hirozuto/gsi-patches -b derpfest-thirteen
+git clone https://github.com/Hirozuto/gsi-patches -b cipher-thirteen
 bash gsi-patches/apply.sh
 ```
 
 ## Credits
 These people have helped this project in some way or another, so they should be the ones who receive all the credit:
-- [DerpFest Team](https://github.com/DerpFest-AOSP)
+- [CipherOS Team](https://github.com/CipherOS)
 - [Nazim](https://github.com/naz664)
 - [Attila](https://github.com/TheAttila)
 - [Phhusson](https://github.com/phhusson)
