@@ -1,0 +1,24 @@
+From 2033a475b1ad84fad8a830d609cfd4e672513f19 Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Tue, 28 Mar 2023 01:02:26 +0000
+Subject: [PATCH] sepolicy: Delete private/genfs_contexts
+
+---
+ common/private/genfs_contexts | 5 -----
+ 1 file changed, 5 deletions(-)
+ delete mode 100644 common/private/genfs_contexts
+
+diff --git a/common/private/genfs_contexts b/common/private/genfs_contexts
+deleted file mode 100644
+index c629305..0000000
+--- a/common/private/genfs_contexts
++++ /dev/null
+@@ -1,5 +0,0 @@
+-ifelse(board_excludes_fuseblk_sepolicy, `true', ,
+-genfscon fuseblk / u:object_r:vfat:s0
+-)
+-
+-genfscon sysfs /devices/virtual/timed_output/vibrator u:object_r:sysfs_vibrator:s0
+-- 
+2.37.3
+

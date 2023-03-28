@@ -1,26 +1,25 @@
-From 1c5f4c3ca90ab286c62cc1bc3c73f53e61622092 Mon Sep 17 00:00:00 2001
+From 530a7e7c4bd7599f24041f69ce4098cd2e552fe1 Mon Sep 17 00:00:00 2001
 From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
-Date: Tue, 14 Mar 2023 09:48:53 +0000
-Subject: [PATCH] Removing duplicated apns-conf.xml on
- target/product/aosp_product.mk
+Date: Tue, 28 Mar 2023 00:59:59 +0000
+Subject: [PATCH 1/2] build: Don't handle apns-conf
 
 ---
  target/product/aosp_product.mk | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/target/product/aosp_product.mk b/target/product/aosp_product.mk
-index 3c1d59b6f..51032758d 100644
+index f651f54f5..83482f98e 100644
 --- a/target/product/aosp_product.mk
 +++ b/target/product/aosp_product.mk
-@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
+@@ -40,7 +40,7 @@ PRODUCT_PACKAGES += \
  
  # Telephony:
  #   Provide a APN configuration to GSI product
--ifeq ($(CIPHER_BUILD),)
+-ifeq ($(OCTAVI_BUILD),)
 -PRODUCT_COPY_FILES += \
 -    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
 -endif
-+#ifeq ($(CIPHER_BUILD),)
++#ifeq ($(OCTAVI_BUILD),)
 +#PRODUCT_COPY_FILES += \
 +#    device/sample/etc/apns-full-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
 +#endif

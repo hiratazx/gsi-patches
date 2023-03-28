@@ -1,0 +1,20 @@
+From 4a97baeb2b815dc474954a2f735ad896f7714b02 Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Tue, 28 Mar 2023 01:04:59 +0000
+Subject: [PATCH 2/3] treble: Add offline charger sepolicy
+
+---
+ sepolicy/gsicharger.te | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 sepolicy/gsicharger.te
+
+diff --git a/sepolicy/gsicharger.te b/sepolicy/gsicharger.te
+new file mode 100644
+index 0000000..91cfb5c
+--- /dev/null
++++ b/sepolicy/gsicharger.te
+@@ -0,0 +1 @@
++permissive charger;
+-- 
+2.40.0
+
