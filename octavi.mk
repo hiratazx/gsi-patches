@@ -29,3 +29,7 @@ else ifeq ($(TARGET_PRODUCT),treble_a64_bgS)
 else
   WITH_GAPPS := false
 endif
+
+# OTA
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+        ro.system.ota.json_url=https://raw.githubusercontent.com/Hirozuto/ota-update/main/octavi-gsi.json
