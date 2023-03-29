@@ -13,3 +13,19 @@ OCTAVI_MAINTAINER := ItzKaguya
 
 # APN
 PRODUCT_PACKAGES += apns-conf.xml
+
+ifeq ($(TARGET_PRODUCT),treble_arm64_bgN)
+  WITH_GAPPS := true
+else ifeq ($(TARGET_PRODUCT),treble_a64_bgN)
+  WITH_GAPPS := true
+else ifeq ($(TARGET_PRODUCT),treble_arm64_bgZ)
+  WITH_GAPPS := true
+else ifeq ($(TARGET_PRODUCT),treble_a64_bgZ)
+  WITH_GAPPS := true
+else ifeq ($(TARGET_PRODUCT),treble_arm64_bgS)
+  WITH_GAPPS := true
+else ifeq ($(TARGET_PRODUCT),treble_a64_bgS)
+  WITH_GAPPS := true
+else
+  WITH_GAPPS := false
+endif
