@@ -1,0 +1,32 @@
+From f96789d711011c87f32f760bae8fba535e87cd6b Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Sun, 30 Apr 2023 06:30:55 +0000
+Subject: [PATCH 2/3] add own config
+
+---
+ cherish.mk | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+ create mode 100644 cherish.mk
+
+diff --git a/cherish.mk b/cherish.mk
+new file mode 100644
+index 0000000..88b89de
+--- /dev/null
++++ b/cherish.mk
+@@ -0,0 +1,12 @@
++$(call inherit-product, vendor/cherish/config/common_full_phone.mk)
++-include vendor/cherish/build/core/config.mk
++TARGET_NO_KERNEL_OVERRIDE := true
++TARGET_NO_KERNEL_IMAGE := true
++SELINUX_IGNORE_NEVERALLOWS := true
++
++WITH_DEXPREOPT := false
++
++TARGET_USES_PREBUILT_VENDOR_SEPOLICY := true
++TARGET_HAS_FUSEBLK_SEPOLICY_ON_VENDOR := true
++
++TARGET_FACE_UNLOCK_SUPPORTED := true
+\ No newline at end of file
+-- 
+2.37.3
+

@@ -2,11 +2,11 @@
 
 set -e
 
-source="$(readlink -f -- $1)"
-core="$source/patches/core"
-personal="$source/patches/personal"
+source="$(dirname "$(readlink -f -- "$0")")"
+core="$source/patches/trebledroid"
+personal="$source/patches/itzkaguya"
 
-printf "\n ##### APPLYING CORE PATCHES #####\n";
+printf "\n ##### APPLYING TREBLEDROID PATCHES #####\n";
 sleep 1.0;
 for path in $(cd $core; echo *); do
 	tree="$(tr _ / <<<$path | sed -e 's;platform/;;g')"
