@@ -1,0 +1,26 @@
+From c91641230acd5e7885e79c6e47ac619c4e91418c Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Sun, 30 Apr 2023 06:36:15 +0000
+Subject: [PATCH 3/5] Inherit own config
+
+---
+ config/common.mk | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/config/common.mk b/config/common.mk
+index acb9d610..526b6755 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -306,6 +306,9 @@ else
+ # GMS
+ $(call inherit-product, vendor/gms/products/gms.mk)
+ 
++# ItzKaguya
++$(call inherit-product, vendor/cherish/config/itzkaguya-gsi.mk)
++
+ # RRO Overlays
+ $(call inherit-product, vendor/cherish/config/rro_overlays.mk)
+ endif
+-- 
+2.37.3
+

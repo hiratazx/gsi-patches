@@ -1,0 +1,36 @@
+From c7d45c027aeaf0083acd4288bbde528630822df5 Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Sun, 30 Apr 2023 06:17:56 +0000
+Subject: [PATCH 1/5] Add own build changes
+
+---
+ config/itzkaguya-gsi.mk | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+ create mode 100644 config/itzkaguya-gsi.mk
+
+diff --git a/config/itzkaguya-gsi.mk b/config/itzkaguya-gsi.mk
+new file mode 100644
+index 00000000..1e938099
+--- /dev/null
++++ b/config/itzkaguya-gsi.mk
+@@ -0,0 +1,16 @@
++CHERISH_BUILD := TrebleDroid
++
++# Don't Build Kernel
++TARGET_NO_KERNEL := true
++
++# Use CCache
++USE_CCACHE := true
++
++# Build APN
++PRODUCT_PACKAGES += apns-conf.xml
++
++PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
++	persist.sys.binary_xml=false \
++	ro.cherish.maintainer=ItzKaguya \
++	dalvik.vm.dex2oat64.enabled=true \
++	ro.system.ota.json_url=https://github.com/Hirozuto/cherish-ota/raw/gsi/ota.json
+\ No newline at end of file
+-- 
+2.37.3
+

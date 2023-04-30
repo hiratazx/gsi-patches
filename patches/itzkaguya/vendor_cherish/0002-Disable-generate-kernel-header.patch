@@ -1,0 +1,56 @@
+From a81c3b2c86c93368811a57df3fdfc2c4aff1b112 Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Sun, 30 Apr 2023 06:20:32 +0000
+Subject: [PATCH 2/5] Disable generate kernel header
+
+---
+ build/soong/Android.bp | 33 ---------------------------------
+ 1 file changed, 33 deletions(-)
+
+diff --git a/build/soong/Android.bp b/build/soong/Android.bp
+index 4ff88f00..b3c19c25 100644
+--- a/build/soong/Android.bp
++++ b/build/soong/Android.bp
+@@ -17,39 +17,6 @@ bootstrap_go_package {
+     pluginFor: ["soong_build"],
+ }
+ 
+-cherish_generator {
+-    name: "generated_kernel_includes",
+-
+-    // The headers make command
+-    cmd: "$(PATH_OVERRIDE_SOONG) $(KERNEL_MAKE_CMD) $(KERNEL_MAKE_FLAGS) -C $(TARGET_KERNEL_HEADERS) O=$(KERNEL_BUILD_OUT_PREFIX)$(genDir) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) headers_install",
+-
+-    // Directories that can be imported by a cc_* module generated_headers property
+-    export_include_dirs: [
+-        "usr/audio/include/uapi",
+-        "usr/include",
+-        "usr/include/audio",
+-        "usr/include/audio/include/uapi",
+-        "usr/techpack/audio/include",
+-    ],
+-
+-    // Sources for dependency tracking
+-    dep_root: "$(TARGET_KERNEL_HEADERS)",
+-    dep_files: [
+-        "Makefile",
+-        "include/**/*",
+-        "arch/$(KERNEL_ARCH)/include/**/*",
+-        "techpack/audio/include/**/*",
+-    ],
+-}
+-
+-cc_library_headers {
+-    name: "generated_kernel_headers",
+-    generated_headers: ["generated_kernel_includes"],
+-    export_generated_headers: ["generated_kernel_includes"],
+-    vendor_available: true,
+-    recovery_available: true,
+-}
+-
+ // Target platform agnostic config modules
+ soong_config_module_type {
+     name: "camera_needs_client_info",
+-- 
+2.37.3
+

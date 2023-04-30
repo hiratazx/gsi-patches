@@ -1,0 +1,55 @@
+From 54a60ee273732562abaad7cf7250f42a95fb0754 Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Sun, 30 Apr 2023 06:38:13 +0000
+Subject: [PATCH 4/5] misc changes on common.mk
+
+---
+ config/common.mk | 18 +-----------------
+ 1 file changed, 1 insertion(+), 17 deletions(-)
+
+diff --git a/config/common.mk b/config/common.mk
+index 526b6755..14a774ab 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -23,7 +23,7 @@ endif
+ 
+ # ART
+ # Optimize everything for preopt
+-PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
++PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed-profile
+ # Don't preopt prebuilts
+ DONT_DEXPREOPT_PREBUILTS := true
+ 
+@@ -52,18 +52,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+     ro.com.android.dateformat=MM-dd-yyyy \
+     persist.sys.disable_rescue=true
+ 
+-ifeq ($(TARGET_BUILD_VARIANT),eng)
+-# Disable ADB authentication
+-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
+-else
+-# Enable ADB authentication
+-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
+-
+-# Disable extra StrictMode features on all non-engineering builds
+-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
+-endif
+-
+-
+ # Enable WiFi Display
+ PRODUCT_PROPERTY_OVERRIDES += \
+     persist.sys.wfd.nohdcp=1 \
+@@ -119,10 +107,6 @@ PRODUCT_COPY_FILES += \
+ PRODUCT_COPY_FILES += \
+     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:$(TARGET_COPY_OUT_PRODUCT)/usr/keylayout/Vendor_045e_Product_0719.kl
+ 
+-# Enable Google LILY_EXPERIENCE feature
+-PRODUCT_COPY_FILES += \
+-    vendor/cherish/target/config/permissions/lily_experience.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/lily_experience.xml
+-
+ # Enforce privapp-permissions whitelist
+ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+     ro.control_privapp_permissions=log
+-- 
+2.37.3
+
