@@ -1,0 +1,39 @@
+From 563798b1419a310e654b4ceb2ff0409616db1f30 Mon Sep 17 00:00:00 2001
+From: Hirozuto <madeayurenapramudya@gmail.com>
+Date: Mon, 8 May 2023 06:22:29 +0000
+Subject: [PATCH 3/3] vendor: remove duplicated ro.adb.secure
+
+---
+ config/props.mk | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/config/props.mk b/config/props.mk
+index 80167728..746144c3 100644
+--- a/config/props.mk
++++ b/config/props.mk
+@@ -20,16 +20,16 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+     ro.com.google.clientidbase=$(PRODUCT_GMS_CLIENTID_BASE)
+ endif
+ 
+-ifeq ($(TARGET_BUILD_VARIANT),eng)
+-# Disable ADB authentication
+-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
+-else
++#ifeq ($(TARGET_BUILD_VARIANT),eng)
++## Disable ADB authentication
++#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
++#else
+ # Enable ADB authentication
+-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
++#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
+ 
+ # Disable extra StrictMode features on all non-engineering builds
+ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
+-endif
++#endif
+ 
+ # Enable one-handed mode
+ PRODUCT_PRODUCT_PROPERTIES += \
+-- 
+2.40.1
+
