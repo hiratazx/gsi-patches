@@ -1,0 +1,29 @@
+From b403e9e08f311f3eb913dd13559ac5a698fc41bd Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Thu, 11 May 2023 09:15:22 +0000
+Subject: [PATCH] build: Remove duplicated ro.adb.secure
+
+---
+ core/main.mk | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/core/main.mk b/core/main.mk
+index 3180fcce9..2f7e556f8 100644
+--- a/core/main.mk
++++ b/core/main.mk
+@@ -368,9 +368,9 @@ ifneq (,$(user_variant))
+   ADDITIONAL_SYSTEM_PROPERTIES += ro.secure=1
+   ADDITIONAL_SYSTEM_PROPERTIES += security.perf_harden=1
+ 
+-  ifeq ($(user_variant),user)
+-    ADDITIONAL_SYSTEM_PROPERTIES += ro.adb.secure=1
+-  endif
++#  ifeq ($(user_variant),user)
++#    ADDITIONAL_SYSTEM_PROPERTIES += ro.adb.secure=1
++#  endif
+ 
+   ifeq ($(user_variant),userdebug)
+     # Pick up some extra useful tools
+-- 
+2.37.3
+

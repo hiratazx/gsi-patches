@@ -1,0 +1,48 @@
+From 4f067780ea12041c31f42cb2120261dbcc04d148 Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Thu, 11 May 2023 09:12:42 +0000
+Subject: [PATCH 2/3] config: add own changes
+
+---
+ config/common.mk    |  3 +++
+ config/itzkaguya.mk | 16 ++++++++++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 config/itzkaguya.mk
+
+diff --git a/config/common.mk b/config/common.mk
+index 24882bc8..94f0330e 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -145,3 +145,6 @@ $(call inherit-product, vendor/xdroid-pixel/config.mk)
+ # init.rc
+ $(foreach f,$(wildcard vendor/xdroid/prebuilt/etc/init/*.rc),\
+     $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
++
++# ItzKaguya
++$(call inherit-product-if-exists, vendor/xdroid/config/itzkaguya.mk)
+diff --git a/config/itzkaguya.mk b/config/itzkaguya.mk
+new file mode 100644
+index 00000000..1673c547
+--- /dev/null
++++ b/config/itzkaguya.mk
+@@ -0,0 +1,16 @@
++XDROID_BUILD := TrebleDroid
++XDROID_MAINTAINER := ItzKaguya
++
++# Don't Build Kernel
++TARGET_NO_KERNEL := true
++
++# Use CCache
++USE_CCACHE := true
++
++# Build APN
++PRODUCT_PACKAGES += apns-conf.xml
++
++PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
++	persist.sys.binary_xml=false \
++	dalvik.vm.dex2oat64.enabled=true \
++	ro.xdroid.maintainer=ItzKaguya
+\ No newline at end of file
+-- 
+2.37.3
+

@@ -1,0 +1,105 @@
+From 6b9b29019ff052cefc3d081b631d2865f97e7a13 Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Thu, 11 May 2023 09:42:13 +0000
+Subject: [PATCH 1/2] treble: Adding own changes
+
+---
+ .gitignore          |  4 ++--
+ AndroidProducts.mk  |  3 +++
+ treble_arm64_bgN.mk | 21 +++++++++++++++++++++
+ treble_arm64_bvN.mk | 15 +++++++++++++++
+ xdroid.mk           | 12 ++++++++++++
+ 5 files changed, 53 insertions(+), 2 deletions(-)
+ create mode 100644 AndroidProducts.mk
+ create mode 100644 treble_arm64_bgN.mk
+ create mode 100644 treble_arm64_bvN.mk
+ create mode 100644 xdroid.mk
+
+diff --git a/.gitignore b/.gitignore
+index a2533a7..e609401 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,3 +1,3 @@
+ .*.swp
+-treble_*mk
+-AndroidProducts.mk
++#treble_*mk
++#AndroidProducts.mk
+diff --git a/AndroidProducts.mk b/AndroidProducts.mk
+new file mode 100644
+index 0000000..67dccf0
+--- /dev/null
++++ b/AndroidProducts.mk
+@@ -0,0 +1,3 @@
++PRODUCT_MAKEFILES := \
++        $(LOCAL_DIR)/treble_arm64_bvN.mk \
++        $(LOCAL_DIR)/treble_arm64_bgN.mk \
+diff --git a/treble_arm64_bgN.mk b/treble_arm64_bgN.mk
+new file mode 100644
+index 0000000..54457b3
+--- /dev/null
++++ b/treble_arm64_bgN.mk
+@@ -0,0 +1,21 @@
++$(call inherit-product, vendor/gms/gms_mini.mk)
++$(call inherit-product, device/phh/treble/base-pre.mk)
++include build/make/target/product/aosp_arm64.mk
++$(call inherit-product, device/phh/treble/base.mk)
++$(call inherit-product, device/phh/treble/octavi.mk)
++
++PRODUCT_NAME := treble_arm64_bgN
++PRODUCT_DEVICE := tdgsi_arm64_ab
++PRODUCT_BRAND := google
++PRODUCT_SYSTEM_BRAND := google
++PRODUCT_MODEL := TrebleDroid with GApps
++
++# Overwrite the inherited "emulator" characteristics
++PRODUCT_CHARACTERISTICS := device
++
++PRODUCT_PACKAGES +=
++
++TARGET_SUPPORTS_GOOGLE_RECORDER ?= false
++TARGET_INCLUDE_STOCK_ARCORE ?= false
++TARGET_INCLUDE_LIVE_WALLPAPERS ?= false
++TARGET_SUPPORTS_QUICK_TAP ?= true
+diff --git a/treble_arm64_bvN.mk b/treble_arm64_bvN.mk
+new file mode 100644
+index 0000000..d5ee3f6
+--- /dev/null
++++ b/treble_arm64_bvN.mk
+@@ -0,0 +1,15 @@
++$(call inherit-product, device/phh/treble/base-pre.mk)
++include build/make/target/product/aosp_arm64.mk
++$(call inherit-product, device/phh/treble/base.mk)
++$(call inherit-product, device/phh/treble/octavi.mk)
++
++PRODUCT_NAME := treble_arm64_bvN
++PRODUCT_DEVICE := tdgsi_arm64_ab
++PRODUCT_BRAND := google
++PRODUCT_SYSTEM_BRAND := google
++PRODUCT_MODEL := TrebleDroid vanilla
++
++# Overwrite the inherited "emulator" characteristics
++PRODUCT_CHARACTERISTICS := device
++
++PRODUCT_PACKAGES +=
+diff --git a/xdroid.mk b/xdroid.mk
+new file mode 100644
+index 0000000..a65ba6a
+--- /dev/null
++++ b/xdroid.mk
+@@ -0,0 +1,12 @@
++$(call inherit-product, vendor/xdroid/config/common_full_phone.mk)
++-include vendor/xdroid/build/core/config.mk
++TARGET_NO_KERNEL_OVERRIDE := true
++TARGET_NO_KERNEL_IMAGE := true
++SELINUX_IGNORE_NEVERALLOWS := true
++
++WITH_DEXPREOPT := false
++
++TARGET_USES_PREBUILT_VENDOR_SEPOLICY := true
++TARGET_HAS_FUSEBLK_SEPOLICY_ON_VENDOR := true
++
++TARGET_FACE_UNLOCK_SUPPORTED := true
+-- 
+2.37.3
+

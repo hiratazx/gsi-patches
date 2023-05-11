@@ -1,0 +1,28 @@
+From de1007b70f640d094ac5631d5b115ea5605fbc41 Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Thu, 11 May 2023 09:38:56 +0000
+Subject: [PATCH 3/3] config: Exclude GApps by default
+
+---
+ config/common.mk | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/config/common.mk b/config/common.mk
+index 94f0330e..ac455865 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -37,11 +37,6 @@ include vendor/xdroid/config/xd_signed.mk
+ include vendor/xdroidui/config.mk
+ 
+ # xd. GMS
+-$(call inherit-product, vendor/gms/gms_mini.mk)
+-TARGET_SUPPORTS_GOOGLE_RECORDER ?= false
+-TARGET_INCLUDE_STOCK_ARCORE ?= false
+-TARGET_INCLUDE_LIVE_WALLPAPERS ?= false
+-TARGET_SUPPORTS_QUICK_TAP ?= true
+ 
+ # ART
+ # Optimize everything for preopt
+-- 
+2.37.3
+
