@@ -1,0 +1,24 @@
+From ad1297be79ccfbd8bd35d8d7d915a2e563ca7daa Mon Sep 17 00:00:00 2001
+From: Raka Prasetya Pratama <madeayurenapramudya@gmail.com>
+Date: Mon, 25 Sep 2023 15:07:30 +0000
+Subject: [PATCH 3/3] common: Don't override kernel
+
+---
+ config/common.mk | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/config/common.mk b/config/common.mk
+index 7033920..2dcade2 100644
+--- a/config/common.mk
++++ b/config/common.mk
+@@ -113,6 +113,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
+ PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
+ PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/octavi/overlay
+ PRODUCT_PACKAGE_OVERLAYS += vendor/octavi/overlay/common
++TARGET_NO_KERNEL_OVERRIDE := true
+ 
+ -include $(WORKSPACE)/build_env/image-auto-bits.mk
+ -include vendor/octavi/config/partner_gms.mk
+-- 
+2.37.3
+
