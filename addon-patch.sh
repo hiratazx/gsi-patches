@@ -9,15 +9,15 @@ printf "\n##### mCallingPid Patches #####\n";
 sleep 5.0;
 printf "\n##### APPLYING PATCHES #####\n";
 sleep 1.0;
-for path_personal in $(cd $personal; echo *); do
-	tree="$(tr _ / <<<$path_personal | sed -e 's;platform/;;g')"
-	printf "\n| $path_personal #####\n";
+for path_addon in $(cd $addon; echo *); do
+	tree="$(tr _ / <<<$path_addon | sed -e 's;platform/;;g')"
+	printf "\n| $path_addon #####\n";
 	[ "$tree" == build ] && tree=build/make
     [ "$tree" == vendor/hardware/overlay ] && tree=vendor/hardware_overlay
     [ "$tree" == treble/app ] && tree=treble_app
 	pushd $tree
 	
-	for patch in $personal/$path_personal/*.patch; do
+	for patch in $addon/$path_addon/*.patch; do
 		# Check if patch is already applied
 		if patch -f -p1 --dry-run -R < $patch > /dev/null; then
             printf "##### ALREDY APPLIED: $patch \n";
